@@ -731,7 +731,7 @@
 
     <script>
         // ===== CONFIG =====
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbwTtEGC1WMnFlQrGEVnjIcEVTUWO_B_MZWNbKBsaigkemimlvMKAApy761mn7YOBqoM/exec";
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbyFOztX6a-EwSYj9RFOZ0ph5xEsFuc1bcV7GFFLw-0x4QqGu5TSPkjZNNY3N7d1ybez/exec";
 
         // ===== DOM refs =====
         const form = document.getElementById('compForm');
@@ -889,7 +889,7 @@
             submitBtn.classList.add('loading');
             submitBtn.innerHTML = 'جاري الإرسال...';
 
-            var body = new URLSearchParams({
+            var payload = JSON.stringify({
                 militaryId: militaryId.value.trim(),
                 fullName: fullName.value.trim(),
                 entity: 'فرع الحسكة',
@@ -904,7 +904,10 @@
 
             fetch(GAS_URL, {
                 method: 'POST',
-                body: body
+                // نستخدم text/plain لتفادي طلب preflight من المتصفح؛
+                // Google Apps Script يقرأ المحتوى الخام عبر e.postData.contents ويحوّله JSON بنفسه
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: payload
             })
             .then(function(res) { return res.json(); })
             .then(function(data) {
