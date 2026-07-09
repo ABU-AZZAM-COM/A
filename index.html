@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -303,22 +303,6 @@
         }
         .msg-success svg { color: var(--teal); }
 
-        .msg-duplicate {
-            background: rgba(201, 162, 39, 0.06); border: 1px solid rgba(201, 162, 39, 0.15); color: #6a5520;
-        }
-        .msg-duplicate svg { color: var(--gold); }
-
-        .msg-duplicate strong { display: block; margin-bottom: 6px; font-size: 15px; }
-
-        .whatsapp-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            margin-top: 12px; padding: 10px 22px; background: #25D366; color: white; border: none;
-            border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer;
-            font-family: 'Noto Sans Arabic', sans-serif; text-decoration: none;
-            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
-        }
-        .whatsapp-btn:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35); }
-
         /* ===== CONFIRMATION MODAL ===== */
         .confirm-overlay {
             display: none; position: fixed; inset: 0; z-index: 99999;
@@ -440,7 +424,35 @@
         }
         .btn-secondary:hover { border-color: rgba(27, 77, 62, 0.15); color: var(--teal); }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== FLOATING INQUIRY BUTTON (WhatsApp) ===== */
+        .inquiry-fab {
+            position: fixed; bottom: 24px; left: 24px; z-index: 500;
+            width: 56px; height: 56px; border-radius: 50%;
+            background: linear-gradient(135deg, #25D366, #1da851);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            text-decoration: none; color: white;
+            transition: all 0.3s ease;
+            animation: fabPulse 2.2s ease-in-out infinite;
+        }
+        .inquiry-fab:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+            animation: none;
+        }
+        .inquiry-fab svg { width: 28px; height: 28px; }
+        @keyframes fabPulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.65), 0 0 0 8px rgba(37, 211, 102, 0.08); }
+        }
+        .inquiry-fab .fab-tooltip {
+            position: absolute; right: 66px; top: 50%; transform: translateY(-50%);
+            background: var(--teal-dark); color: white; font-size: 12px; font-weight: 600;
+            padding: 7px 14px; border-radius: 10px; white-space: nowrap;
+            opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+        }
+        .inquiry-fab:hover .fab-tooltip { opacity: 1; }
+
         @media (max-width: 640px) {
             body { padding: 8px; }
             .container { max-width: 100%; }
@@ -452,6 +464,9 @@
             .confirm-body { max-height: 260px; }
             .confirm-footer { flex-direction: column; }
             .footer-credit { font-size: 14px; }
+            .inquiry-fab { width: 50px; height: 50px; bottom: 16px; left: 16px; }
+            .inquiry-fab svg { width: 24px; height: 24px; }
+            .inquiry-fab .fab-tooltip { display: none; }
         }
     </style>
 </head>
@@ -459,6 +474,12 @@
 
     <div class="gold-bar"></div>
     <div class="bg-pattern"></div>
+
+    <!-- زر استفسار عائم (واتساب) -->
+    <a class="inquiry-fab" id="inquiryFab" href="#" target="_blank" title="استفسار عبر واتساب">
+        <span class="fab-tooltip">استفسار عبر واتساب</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.121 1.526 5.855L.053 23.453l5.772-1.453A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.155 0-4.163-.582-5.89-1.588l-.422-.252-4.108 1.034 1.1-4.005-.272-.458A9.964 9.964 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
 
     <div class="container">
         <div class="card">
@@ -488,18 +509,6 @@
                 <div class="msg-box msg-success" id="msgSuccess">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     <span id="msgSuccessText">تم إرسال البيانات بنجاح.</span>
-                </div>
-
-                <div class="msg-box msg-duplicate" id="msgDuplicate">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                    <div>
-                        <strong>هذا الرقم العسكري مسجل مسبقاً</strong>
-                        <span id="msgDuplicateText">بياناتك موجودة بالفعل في سجل التعويضات. إذا أردت تعديل أي معلومة، يرجى التواصل مع أبو عزام.</span>
-                        <a class="whatsapp-btn" id="whatsappBtn" href="#" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.121 1.526 5.855L.053 23.453l5.772-1.453A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.155 0-4.163-.582-5.89-1.588l-.422-.252-4.108 1.034 1.1-4.005-.272-.458A9.964 9.964 0 0 1 2 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
-                            تواصل الآن
-                        </a>
-                    </div>
                 </div>
 
                 <!-- Fields -->
@@ -646,7 +655,6 @@
                 <!-- Hidden fields for iframe submission -->
                 <input type="hidden" name="entity" value="فرع الحسكة">
                 <input type="hidden" name="jobCode" value="————">
-                <input type="hidden" name="timestamp" id="timestampField" value="">
 
                 <!-- Submit -->
                 <div class="form-submit">
@@ -724,7 +732,7 @@
 
     <script>
         // ===== CONFIG =====
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbyFOztX6a-EwSYj9RFOZ0ph5xEsFuc1bcV7GFFLw-0x4QqGu5TSPkjZNNY3N7d1ybez/exec";
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbwTtEGC1WMnFlQrGEVnjIcEVTUWO_B_MZWNbKBsaigkemimlvMKAApy761mn7YOBqoM/exec";
 
         // ===== DOM refs =====
         const form = document.getElementById('compForm');
@@ -742,8 +750,6 @@
         const loadingOverlay = document.getElementById('loadingOverlay');
         const msgError = document.getElementById('msgError');
         const msgErrorText = document.getElementById('msgErrorText');
-        const msgDuplicate = document.getElementById('msgDuplicate');
-        const whatsappBtn = document.getElementById('whatsappBtn');
         const shamHelpBtn = document.getElementById('shamHelpBtn');
         const shamModal = document.getElementById('shamModal');
         const modalCloseBtn = document.getElementById('modalCloseBtn');
@@ -755,17 +761,16 @@
         const closePageBtn = document.getElementById('closePageBtn');
         const militaryWarning = document.getElementById('militaryWarning');
         const shamWarning = document.getElementById('shamWarning');
+        const inquiryFab = document.getElementById('inquiryFab');
 
-        // ===== WhatsApp link =====
+        // ===== WhatsApp inquiry link (زر الاستفسار العائم) =====
         const WHATSAPP_NUMBER = "963951345692";
-        const WHATSAPP_MSG = encodeURIComponent("السلام عليكم ابو عزام ، اريد تعديل بياناتي بخصوص سجل التعويض");
-        whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
+        const WHATSAPP_INQUIRY_MSG = encodeURIComponent("*السلام عليكم ابو عزام اريد الاستفسار بخصوص موضوع سجل التعويض*");
+        inquiryFab.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_INQUIRY_MSG}`;
 
         // ===== Hide message boxes =====
         function hideMessages() {
-            [msgError, msgDuplicate].forEach(function(m) {
-                if (m) m.classList.remove('show');
-            });
+            msgError.classList.remove('show');
         }
 
         // ===== Military ID: auto-uppercase, validate on blur only =====
@@ -886,7 +891,6 @@
             submitBtn.innerHTML = 'جاري الإرسال...';
 
             var form = document.getElementById('compForm');
-            document.getElementById('timestampField').value = new Date().toISOString();
             form.action = GAS_URL;
             form.method = 'POST';
             form.target = 'gasIframe';
@@ -901,15 +905,6 @@
             reasonDetail.value = '';
             [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
             successOverlay.classList.add('show');
-        }
-
-        function afterDuplicate() {
-            loadingOverlay.classList.remove('show');
-            submitBtn.classList.remove('loading');
-            submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> إرسال البيانات';
-            hideMessages();
-            msgDuplicate.classList.add('show');
-            msgDuplicate.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function afterError(msg) {
@@ -927,8 +922,6 @@
             var data = e.data || {};
             if (data.status === 'success') {
                 afterSend();
-            } else if (data.status === 'duplicate') {
-                afterDuplicate();
             } else if (data.status === 'error') {
                 afterError(data.message);
             }
@@ -943,19 +936,19 @@
             showConfirmation();
         });
 
-        // ===== Close success page =====
+        // ===== Reset button =====
+        resetBtn.addEventListener('click', function() {
+            form.reset();
+            reasonDetail.value = '';
+            hideMessages();
+            [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
+        });
+
+        // ===== Close page button =====
         closePageBtn.addEventListener('click', function() {
+            successOverlay.classList.remove('show');
             window.close();
         });
-
-        // ===== Reset =====
-        resetBtn.addEventListener('click', function() {
-            if (confirm('هل تريد تفريغ جميع الحقول؟')) {
-                form.reset(); hideMessages(); reasonDetail.value = '';
-                [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
-            }
-        });
     </script>
-
 </body>
 </html>
