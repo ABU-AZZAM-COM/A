@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نموذج التعويض | فرع الحسكة</title>
+    <title>نموذج التعويض | سورية</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Aref+Ruqaa:wght@400;700&family=Lateef:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -105,7 +105,7 @@
             margin-bottom: 10px; display: inline-block;
         }
         .header-logo img {
-            width: 170px; height: auto; display: block; margin: 0 auto;
+            width: 160px; height: auto; display: block; margin: 0 auto;
             filter: drop-shadow(0 4px 16px rgba(0,0,0,0.3));
         }
 
@@ -375,38 +375,41 @@
         }
         .success-overlay.show { display: flex; }
         .success-box {
-            max-width: 400px; width: 100%; background: var(--white); border-radius: 28px;
-            padding: 48px 32px 36px; text-align: center;
+            max-width: 450px; width: 100%; background: var(--white); border-radius: 28px;
+            padding: 40px 28px 32px; text-align: center;
             box-shadow: 0 40px 100px rgba(0,0,0,0.4);
             animation: confirmIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .success-icon svg {
-            width: 72px; height: 72px; color: var(--teal); margin-bottom: 20px;
+            width: 72px; height: 72px; color: var(--teal); margin-bottom: 16px;
             filter: drop-shadow(0 4px 20px rgba(27,77,62,0.2));
         }
         .success-box h2 {
-            font-size: 24px; font-weight: 700; color: var(--teal-dark); margin: 0 0 8px;
+            font-size: 24px; font-weight: 700; color: var(--teal-dark); margin: 0 0 6px;
         }
         .success-box p {
-            font-size: 15px; color: var(--text-muted); line-height: 1.8; margin: 0 0 28px;
+            font-size: 14px; color: var(--text-muted); line-height: 1.8; margin: 0 0 20px;
         }
-        .success-actions {
-            display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+        .success-buttons {
+            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
         }
         .btn-close-page {
-            padding: 14px 32px; border: none; border-radius: 16px;
-            background: var(--teal); color: white; font-size: 15px; font-weight: 700;
+            padding: 12px 32px; border: none; border-radius: 14px;
+            background: var(--teal); color: white; font-size: 14px; font-weight: 600;
             cursor: pointer; font-family: 'Noto Sans Arabic', sans-serif;
             transition: all 0.3s; box-shadow: 0 6px 25px rgba(27,77,62,0.2);
+            flex: 1; min-width: 120px;
         }
         .btn-close-page:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 10px 35px rgba(27,77,62,0.3); }
-        .btn-another-short {
-            padding: 14px 24px; border: 2px solid var(--gold); border-radius: 16px;
-            background: transparent; color: var(--gold-dark); font-size: 14px; font-weight: 700;
+
+        .btn-another-comp {
+            padding: 12px 32px; border: 2px solid var(--teal); border-radius: 14px;
+            background: transparent; color: var(--teal); font-size: 14px; font-weight: 600;
             cursor: pointer; font-family: 'Noto Sans Arabic', sans-serif;
             transition: all 0.3s;
+            flex: 1; min-width: 120px;
         }
-        .btn-another-short:hover { background: var(--gold); color: white; transform: translateY(-2px); }
+        .btn-another-comp:hover { background: var(--teal); color: white; transform: translateY(-2px); box-shadow: 0 6px 25px rgba(27,77,62,0.15); }
 
         /* ===== SUBMIT ===== */
         .form-submit { margin-top: 28px; }
@@ -467,16 +470,18 @@
             body { padding: 8px; }
             .container { max-width: 100%; }
             .card { border-radius: 20px; }
-            .header { padding: 24px 16px 26px; }
+            .header { padding: 20px 12px 22px; }
             .header-title { font-size: 18px; }
-            .header-logo img { width: 130px; }
-            .form-body { padding: 20px 14px 28px; }
+            .header-logo img { width: 120px; }
+            .form-body { padding: 16px 10px 24px; }
             .confirm-body { max-height: 260px; }
             .confirm-footer { flex-direction: column; }
             .footer-credit { font-size: 14px; }
             .inquiry-fab { width: 50px; height: 50px; bottom: 16px; left: 16px; }
             .inquiry-fab svg { width: 24px; height: 24px; }
             .inquiry-fab .fab-tooltip { display: none; }
+            .success-buttons { flex-direction: column; }
+            .btn-close-page, .btn-another-comp { min-width: auto; }
         }
     </style>
 </head>
@@ -571,7 +576,7 @@
                     </div>
                     <div class="field-warning" id="shamWarning">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        <span>ان رقم حساب الشام كاش الذي ادخلته غير صحيح يرجى التاكد</span>
+                        <span>ان رقم حساب الشام كاش الذي ادخلته غير صحيح يرجى التاكد (يجب أن يتكون من 16 رقم)</span>
                     </div>
                 </div>
 
@@ -592,10 +597,10 @@
                         الرمز الوظيفي في شهر التعويض
                     </label>
                     <div class="field-wrap">
-                        <input type="text" class="form-input readonly" id="jobCode" value="" readonly disabled>
+                        <input type="text" class="form-input readonly" id="jobCode" value="" readonly disabled style="background:rgba(27,77,62,0.04);color:var(--text-muted);cursor:not-allowed;border-style:dashed;">
                         <span class="field-corner tl"></span><span class="field-corner br"></span>
                     </div>
-                    <span class="form-hint"><span class="icon">◆</span> هيتم تعبئته هذا الحقل من قبل الإدارة</span>
+                    <span class="form-hint"><span class="icon">◆</span> يتم تعبئته هذا الحقل من قبل الإدارة</span>
                 </div>
 
                 <div class="form-group">
@@ -650,14 +655,14 @@
                     </div>
                 </div>
 
-                <!-- اختيار الشهر عند اختيار "سبب اخر" -->
-                <div class="form-group hidden-field" id="monthPickerGroup">
+                <!-- حقل اختيار الشهر عند اختيار "لم استلم راتبي" -->
+                <div class="form-group" id="monthSelectorGroup" style="display:none;">
                     <label class="form-label">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                        في أي شهر لم تستلم الراتب؟ <span class="required">*</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+                        اختر الشهر الذي لم تستلم فيه الراتب <span class="required">*</span>
                     </label>
                     <div class="field-wrap">
-                        <select class="form-select" id="monthPicker">
+                        <select class="form-select" id="monthSelector">
                             <option value="">— اختر الشهر —</option>
                             <option value="1">الشهر 1</option>
                             <option value="2">الشهر 2</option>
@@ -683,7 +688,7 @@
                         السبب بالتفصيل <span class="required">*</span>
                     </label>
                     <div class="field-wrap">
-                        <textarea class="form-textarea" id="reasonDetail" placeholder="سيتم ملء هذا الحقل تلقائياً حسب اختيارك من القائمة أعلاه" rows="3" readonly disabled></textarea>
+                        <textarea class="form-textarea" id="reasonDetail" placeholder="سيتم ملء هذا الحقل تلقائياً حسب اختيارك من القائمة أعلاه، ويمكنك تعديله..." rows="3"></textarea>
                         <span class="field-corner tl"></span><span class="field-corner br"></span>
                     </div>
                 </div>
@@ -691,7 +696,6 @@
                 <!-- Hidden fields for iframe submission -->
                 <input type="hidden" name="entity" value="فرع الحسكة">
                 <input type="hidden" name="jobCode" value="">
-                <input type="hidden" name="timestamp" id="timestampField" value="">
 
                 <!-- Submit -->
                 <div class="form-submit">
@@ -735,8 +739,6 @@
         </div>
     </div>
 
-    <!-- تمت إزالة iframe المخفي - لم يعد مستخدماً بعد التحول إلى fetch() -->
-
     <!-- ===== CONFIRMATION MODAL ===== -->
     <div class="confirm-overlay" id="confirmOverlay">
         <div class="confirm-box">
@@ -761,17 +763,17 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
             <h2>شكراً لك!</h2>
-            <p>تم إرسال بيانات بنجاح إلى سجل التعويضات.<br>يمكنك إغلاق هذه الصفحة.</p>
-            <div class="success-actions">
-                <button type="button" class="btn-another-short" id="anotherShortBtn">هل لديك نقص آخر</button>
+            <p>تم إرسال بيانات بنجاح إلى سجل التعويضات.</p>
+            <div class="success-buttons">
                 <button type="button" class="btn-close-page" id="closePageBtn">إغلاق الصفحة</button>
+                <button type="button" class="btn-another-comp" id="anotherCompBtn">هل لديك نقص آخر؟</button>
             </div>
         </div>
     </div>
 
     <script>
         // ===== CONFIG =====
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbxj-Ibf_wWmdLdy2Go6fbzqlVYafZZE5Y2hlZak-GV-fhbXxA0dwPPGArg32uyEveqv/exec";
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbyFOztX6a-EwSYj9RFOZ0ph5xEsFuc1bcV7GFFLw-0x4QqGu5TSPkjZNNY3N7d1ybez/exec";
 
         // ===== DOM refs =====
         const form = document.getElementById('compForm');
@@ -784,6 +786,8 @@
         const compensationValue = document.getElementById('compensationValue');
         const compReason = document.getElementById('compReason');
         const reasonDetail = document.getElementById('reasonDetail');
+        const monthSelectorGroup = document.getElementById('monthSelectorGroup');
+        const monthSelector = document.getElementById('monthSelector');
         const submitBtn = document.getElementById('submitBtn');
         const resetBtn = document.getElementById('resetBtn');
         const loadingOverlay = document.getElementById('loadingOverlay');
@@ -798,16 +802,17 @@
         const confirmSend = document.getElementById('confirmSend');
         const successOverlay = document.getElementById('successOverlay');
         const closePageBtn = document.getElementById('closePageBtn');
-        const anotherShortBtn = document.getElementById('anotherShortBtn');
+        const anotherCompBtn = document.getElementById('anotherCompBtn');
         const militaryWarning = document.getElementById('militaryWarning');
         const shamWarning = document.getElementById('shamWarning');
         const inquiryFab = document.getElementById('inquiryFab');
 
-        // ===== WhatsApp inquiry link (زر الاستفسار العائم) =====
+        // ===== WhatsApp inquiry link =====
         const WHATSAPP_NUMBER = "963951345692";
-        const WHATSAPP_MSG = encodeURIComponent("السلام عليكم ، (ابو عزام)  *أود الاستفسار بخصوص موضوع سجل التعويض. هل يمكنني الحصول على مزيد من المعلومات حول ذلك؟*");
-        whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
-        inquiryFab.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MSG}`;
+        const WHATSAPP_INQUIRY_MSG = encodeURIComponent(
+            "السلام عليكم ، (ابو عزام)  *أود الاستفسار بخصوص موضوع سجل التعويض. هل يمكنني الحصول على مزيد من المعلومات حول ذلك؟*"
+        );
+        inquiryFab.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_INQUIRY_MSG}`;
 
         // ===== Hide message boxes =====
         function hideMessages() {
@@ -831,14 +836,14 @@
             }
         });
 
-        // ===== ShamCash: strip spaces, validate on blur only =====
+        // ===== ShamCash: remove spaces, validate on blur =====
         shamCash.addEventListener('input', function() {
+            // إزالة جميع الفراغات
             this.value = this.value.replace(/\s/g, '');
             this.classList.remove('error');
             shamWarning.classList.remove('show');
         });
         shamCash.addEventListener('blur', function() {
-            this.value = this.value.replace(/\s/g, '');
             const v = this.value.replace(/\D/g, '');
             if (v.length > 0 && v.length !== 16) {
                 this.classList.add('error');
@@ -846,6 +851,22 @@
             } else {
                 this.classList.remove('error');
                 shamWarning.classList.remove('show');
+            }
+        });
+        // منع إدخال الفراغات بشكل كامل
+        shamCash.addEventListener('keydown', function(e) {
+            if (e.key === ' ' || e.code === 'Space') {
+                e.preventDefault();
+            }
+        });
+        shamCash.addEventListener('paste', function(e) {
+            const pasted = (e.clipboardData || window.clipboardData).getData('text');
+            if (pasted.includes(' ')) {
+                e.preventDefault();
+                const cleaned = pasted.replace(/\s/g, '');
+                this.value = cleaned;
+                // تشغيل حدث input لتنظيف القيمة
+                this.dispatchEvent(new Event('input'));
             }
         });
 
@@ -857,32 +878,46 @@
         shamModal.addEventListener('click', function(e) { if (e.target === shamModal) closeShamModal(); });
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeShamModal(); });
 
-        // ===== Comp reason logic =====
-        const monthPickerGroup = document.getElementById('monthPickerGroup');
-        const monthPicker = document.getElementById('monthPicker');
-
+        // ===== Comp reason logic with month selector =====
         compReason.addEventListener('change', function() {
-            var val = this.value;
-            if (val === 'سبب اخر') {
-                monthPickerGroup.classList.remove('hidden-field');
+            const val = this.value;
+
+            // إظهار/إخفاء حقل اختيار الشهر
+            if (val === 'لم استلم راتبي') {
+                monthSelectorGroup.style.display = 'block';
+                monthSelector.value = '';
                 reasonDetail.value = '';
                 reasonDetail.disabled = true;
+                reasonDetail.placeholder = 'الرجاء اختيار الشهر من القائمة أعلاه أولاً';
+            } else if (val === 'سبب اخر') {
+                monthSelectorGroup.style.display = 'none';
+                reasonDetail.disabled = false;
+                reasonDetail.value = '';
+                reasonDetail.placeholder = 'اكتب سبب التعويض بالتفصيل...';
+            } else if (val.startsWith('نقص في الشهر')) {
+                monthSelectorGroup.style.display = 'none';
+                reasonDetail.disabled = false;
+                reasonDetail.value = val;
+                reasonDetail.placeholder = 'يمكنك تعديل النص...';
             } else {
-                monthPickerGroup.classList.add('hidden-field');
-                monthPicker.value = '';
-                if (val && (val.startsWith('نقص في الشهر') || val === 'لم استلم راتبي')) {
-                    reasonDetail.value = val;
-                } else {
-                    reasonDetail.value = '';
-                }
+                monthSelectorGroup.style.display = 'none';
+                reasonDetail.disabled = false;
+                reasonDetail.value = '';
+                reasonDetail.placeholder = 'سيتم ملء هذا الحقل تلقائياً حسب اختيارك من القائمة أعلاه، ويمكنك تعديله...';
             }
         });
 
-        monthPicker.addEventListener('change', function() {
-            if (this.value) {
-                reasonDetail.value = 'لم استلم راتبي في الشهر ' + this.value;
+        // ===== Month selector logic for "لم استلم راتبي" =====
+        monthSelector.addEventListener('change', function() {
+            const month = this.value;
+            if (month) {
+                reasonDetail.value = 'لم استلم راتبي في الشهر ' + month;
+                reasonDetail.disabled = false;
+                reasonDetail.placeholder = 'يمكنك تعديل النص...';
             } else {
                 reasonDetail.value = '';
+                reasonDetail.disabled = true;
+                reasonDetail.placeholder = 'الرجاء اختيار الشهر من القائمة أعلاه أولاً';
             }
         });
 
@@ -897,17 +932,33 @@
             var amount = amountReceived.value;
             var compVal = compensationValue.value;
             var reason = compReason.value;
+            var reasonDetailVal = reasonDetail.value.trim();
 
             if (!mil) errors.push("الرقم العسكري مطلوب");
             else if (!/^[A-Z]\d+$/.test(mil)) errors.push("الرقم العسكري غير صحيح يرجى ادخال رقمك صحيح (مثال: A468481)");
             if (!name) errors.push("الاسم الثلاثي مطلوب");
             if (!sham) errors.push("حساب شام كاش مطلوب");
-            else if (sham.length !== 16) errors.push("ان رقم حساب الشام كاش الذي ادخلته غير صحيح يرجى التاكد");
+            else if (sham.length !== 16) errors.push("ان رقم حساب الشام كاش الذي ادخلته غير صحيح يرجى التاكد (يجب أن يتكون من 16 رقم)");
             if (amount === '' || isNaN(parseFloat(amount))) errors.push("المبلغ المستلم مطلوب");
             if (!compVal || parseFloat(compVal) <= 0) errors.push("قيمة التعويض المطلوب مطلوبة وأن تكون رقمًا موجبًا");
             if (!reason) errors.push("يرجى اختيار سبب التعويض");
-            if (reason === 'سبب اخر' && !document.getElementById('monthPicker').value) errors.push("يرجى اختيار الشهر");
-            if (!reasonDetail.value.trim()) errors.push("يرجى كتابة السبب بالتفصيل");
+
+            // التحقق من سبب التفصيل
+            if (reason === 'لم استلم راتبي') {
+                const month = monthSelector.value;
+                if (!month) {
+                    errors.push("يرجى اختيار الشهر الذي لم تستلم فيه الراتب");
+                } else if (!reasonDetailVal || reasonDetailVal === '') {
+                    errors.push("يرجى كتابة السبب بالتفصيل");
+                }
+            } else if (reason === 'سبب اخر') {
+                if (!reasonDetailVal) errors.push("يرجى كتابة سبب التعويض بالتفصيل");
+            } else if (reason.startsWith('نقص في الشهر')) {
+                if (!reasonDetailVal) errors.push("يرجى كتابة السبب بالتفصيل");
+            } else {
+                // أي سبب آخر
+                if (!reasonDetailVal) errors.push("يرجى كتابة السبب بالتفصيل");
+            }
 
             if (errors.length > 0) {
                 msgErrorText.textContent = errors.join(' — ');
@@ -920,11 +971,6 @@
 
         // ===== Build confirmation modal =====
         function showConfirmation() {
-            var reasonVal = compReason.value;
-            if (reasonVal === 'سبب اخر') {
-                var m = document.getElementById('monthPicker').value;
-                if (m) reasonVal = 'سبب اخر — لم استلم راتبي في الشهر ' + m;
-            }
             var rows = [
                 { label: 'الرقم العسكري', value: militaryId.value.trim() },
                 { label: 'الاسم الثلاثي', value: fullName.value.trim() },
@@ -934,7 +980,7 @@
                 { label: 'الرمز الوظيفي', value: jobCode.value || '—' },
                 { label: 'المبلغ المستلم', value: '$ ' + amountReceived.value },
                 { label: 'قيمة التعويض', value: '$ ' + compensationValue.value },
-                { label: 'سبب التعويض', value: reasonVal || '—' },
+                { label: 'سبب التعويض', value: compReason.value || '—' },
                 { label: 'السبب بالتفصيل', value: reasonDetail.value.trim() || '—' }
             ];
             confirmBody.innerHTML = rows.map(function(r) {
@@ -951,7 +997,7 @@
 
         confirmCancel.addEventListener('click', hideConfirmation);
 
-        // ===== Send data function (fetch مباشر إلى GAS، بدون iframe) =====
+        // ===== Send data function =====
         function sendData() {
             hideConfirmation();
             loadingOverlay.classList.add('show');
@@ -964,7 +1010,7 @@
             body.append('entity', 'فرع الحسكة');
             body.append('shamCash', shamCash.value.replace(/\D/g, ''));
             body.append('jobTitle', jobTitle.value.trim());
-            body.append('jobCode', jobCode.value);
+            body.append('jobCode', jobCode.value || '');
             body.append('amountReceived', amountReceived.value);
             body.append('compensationValue', compensationValue.value);
             body.append('compReason', compReason.value);
@@ -993,9 +1039,9 @@
             submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> إرسال البيانات';
             form.reset();
             reasonDetail.value = '';
-            reasonDetail.disabled = true;
-            monthPickerGroup.classList.add('hidden-field');
-            monthPicker.value = '';
+            reasonDetail.disabled = false;
+            monthSelectorGroup.style.display = 'none';
+            monthSelector.value = '';
             [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
             successOverlay.classList.add('show');
         }
@@ -1019,38 +1065,56 @@
             showConfirmation();
         });
 
+        // ===== Reset button =====
+        resetBtn.addEventListener('click', function() {
+            form.reset();
+            reasonDetail.value = '';
+            reasonDetail.disabled = false;
+            monthSelectorGroup.style.display = 'none';
+            monthSelector.value = '';
+            hideMessages();
+            [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
+        });
+
         // ===== Close page button =====
         closePageBtn.addEventListener('click', function() {
             successOverlay.classList.remove('show');
             window.close();
         });
 
-        // ===== Another short button: reset except name, military ID, ShamCash =====
-        anotherShortBtn.addEventListener('click', function() {
+        // ===== Another compensation button (يبقي الاسم والرقم العسكري وشام كاش) =====
+        anotherCompBtn.addEventListener('click', function() {
+            // حفظ القيم المطلوب الاحتفاظ بها
+            const savedMilitary = militaryId.value;
+            const savedName = fullName.value;
+            const savedSham = shamCash.value;
+
             successOverlay.classList.remove('show');
-            var savedName = fullName.value;
-            var savedMil = militaryId.value;
-            var savedSham = shamCash.value;
+
+            // إعادة تعيين النموذج مع الاحتفاظ بالقيم المحفوظة
             form.reset();
             reasonDetail.value = '';
-            reasonDetail.disabled = true;
-            monthPickerGroup.classList.add('hidden-field');
-            monthPicker.value = '';
-            fullName.value = savedName;
-            militaryId.value = savedMil;
-            shamCash.value = savedSham;
-            [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
+            reasonDetail.disabled = false;
+            monthSelectorGroup.style.display = 'none';
+            monthSelector.value = '';
             hideMessages();
+            [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
+
+            // استعادة القيم المحفوظة
+            militaryId.value = savedMilitary;
+            fullName.value = savedName;
+            shamCash.value = savedSham;
+
+            // إزالة أي أخطاء
+            militaryId.classList.remove('error');
+            shamCash.classList.remove('error');
+
+            // التمرير إلى الأعلى
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
-        // ===== Reset =====
-        resetBtn.addEventListener('click', function() {
-            if (confirm('هل تريد تفريغ جميع الحقول؟')) {
-                form.reset(); hideMessages(); reasonDetail.value = ''; reasonDetail.disabled = true;
-                monthPickerGroup.classList.add('hidden-field'); monthPicker.value = '';
-                [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
-            }
-        });
+        // تهيئة حقل الرمز الوظيفي فارغ
+        jobCode.value = '';
     </script>
 </body>
 </html>
