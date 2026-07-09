@@ -585,7 +585,7 @@
                         المبلغ المستلم <span class="required">*</span>
                     </label>
                     <div class="field-wrap">
-                        <input type="number" class="form-input" id="amountReceived" placeholder="مثال: 1500" min="0" step="0.01" inputmode="decimal" required>
+                        <input type="number" class="form-input" id="amountReceived" placeholder="مثال: 0 أو 1500" min="0" step="0.01" inputmode="decimal" required>
                         <span class="field-corner tl"></span><span class="field-corner br"></span>
                     </div>
                     <span class="form-hint"><span class="icon">◆</span> يرجى إدخال المبلغ بالدولار USD — أرقام فقط</span>
@@ -836,7 +836,7 @@
             if (!name) errors.push("الاسم الثلاثي مطلوب");
             if (!sham) errors.push("حساب شام كاش مطلوب");
             else if (sham.length !== 16) errors.push("ان رقم حساب الشام كاش الذي ادخلته غير صحيح يرجى التاكد");
-            if (!amount || parseFloat(amount) <= 0) errors.push("المبلغ المستلم مطلوب وأن يكون رقمًا موجبًا");
+            if (amount === '' || isNaN(parseFloat(amount))) errors.push("المبلغ المستلم مطلوب");
             if (!compVal || parseFloat(compVal) <= 0) errors.push("قيمة التعويض المطلوب مطلوبة وأن تكون رقمًا موجبًا");
             if (!reason) errors.push("يرجى اختيار سبب التعويض");
             if (!reasonDetail.value.trim()) errors.push("يرجى كتابة السبب بالتفصيل");
