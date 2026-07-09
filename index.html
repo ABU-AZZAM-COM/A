@@ -838,7 +838,6 @@
 
         // ===== ShamCash: remove spaces, validate on blur =====
         shamCash.addEventListener('input', function() {
-            // إزالة جميع الفراغات
             this.value = this.value.replace(/\s/g, '');
             this.classList.remove('error');
             shamWarning.classList.remove('show');
@@ -853,7 +852,6 @@
                 shamWarning.classList.remove('show');
             }
         });
-        // منع إدخال الفراغات بشكل كامل
         shamCash.addEventListener('keydown', function(e) {
             if (e.key === ' ' || e.code === 'Space') {
                 e.preventDefault();
@@ -865,7 +863,6 @@
                 e.preventDefault();
                 const cleaned = pasted.replace(/\s/g, '');
                 this.value = cleaned;
-                // تشغيل حدث input لتنظيف القيمة
                 this.dispatchEvent(new Event('input'));
             }
         });
@@ -882,7 +879,6 @@
         compReason.addEventListener('change', function() {
             const val = this.value;
 
-            // إظهار/إخفاء حقل اختيار الشهر
             if (val === 'لم استلم راتبي') {
                 monthSelectorGroup.style.display = 'block';
                 monthSelector.value = '';
@@ -943,7 +939,6 @@
             if (!compVal || parseFloat(compVal) <= 0) errors.push("قيمة التعويض المطلوب مطلوبة وأن تكون رقمًا موجبًا");
             if (!reason) errors.push("يرجى اختيار سبب التعويض");
 
-            // التحقق من سبب التفصيل
             if (reason === 'لم استلم راتبي') {
                 const month = monthSelector.value;
                 if (!month) {
@@ -956,7 +951,6 @@
             } else if (reason.startsWith('نقص في الشهر')) {
                 if (!reasonDetailVal) errors.push("يرجى كتابة السبب بالتفصيل");
             } else {
-                // أي سبب آخر
                 if (!reasonDetailVal) errors.push("يرجى كتابة السبب بالتفصيل");
             }
 
@@ -1084,14 +1078,12 @@
 
         // ===== Another compensation button (يبقي الاسم والرقم العسكري وشام كاش) =====
         anotherCompBtn.addEventListener('click', function() {
-            // حفظ القيم المطلوب الاحتفاظ بها
             const savedMilitary = militaryId.value;
             const savedName = fullName.value;
             const savedSham = shamCash.value;
 
             successOverlay.classList.remove('show');
 
-            // إعادة تعيين النموذج مع الاحتفاظ بالقيم المحفوظة
             form.reset();
             reasonDetail.value = '';
             reasonDetail.disabled = false;
@@ -1100,16 +1092,13 @@
             hideMessages();
             [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
 
-            // استعادة القيم المحفوظة
             militaryId.value = savedMilitary;
             fullName.value = savedName;
             shamCash.value = savedSham;
 
-            // إزالة أي أخطاء
             militaryId.classList.remove('error');
             shamCash.classList.remove('error');
 
-            // التمرير إلى الأعلى
             form.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
