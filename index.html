@@ -390,13 +390,23 @@
         .success-box p {
             font-size: 15px; color: var(--text-muted); line-height: 1.8; margin: 0 0 28px;
         }
+        .success-actions {
+            display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+        }
         .btn-close-page {
-            padding: 14px 48px; border: none; border-radius: 16px;
+            padding: 14px 32px; border: none; border-radius: 16px;
             background: var(--teal); color: white; font-size: 15px; font-weight: 700;
             cursor: pointer; font-family: 'Noto Sans Arabic', sans-serif;
             transition: all 0.3s; box-shadow: 0 6px 25px rgba(27,77,62,0.2);
         }
         .btn-close-page:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 10px 35px rgba(27,77,62,0.3); }
+        .btn-another-short {
+            padding: 14px 24px; border: 2px solid var(--gold); border-radius: 16px;
+            background: transparent; color: var(--gold-dark); font-size: 14px; font-weight: 700;
+            cursor: pointer; font-family: 'Noto Sans Arabic', sans-serif;
+            transition: all 0.3s;
+        }
+        .btn-another-short:hover { background: var(--gold); color: white; transform: translateY(-2px); }
 
         /* ===== SUBMIT ===== */
         .form-submit { margin-top: 28px; }
@@ -752,7 +762,10 @@
             </div>
             <h2>شكراً لك!</h2>
             <p>تم إرسال بيانات بنجاح إلى سجل التعويضات.<br>يمكنك إغلاق هذه الصفحة.</p>
-            <button type="button" class="btn-close-page" id="closePageBtn">إغلاق الصفحة</button>
+            <div class="success-actions">
+                <button type="button" class="btn-another-short" id="anotherShortBtn">هل لديك نقص آخر</button>
+                <button type="button" class="btn-close-page" id="closePageBtn">إغلاق الصفحة</button>
+            </div>
         </div>
     </div>
 
@@ -785,6 +798,7 @@
         const confirmSend = document.getElementById('confirmSend');
         const successOverlay = document.getElementById('successOverlay');
         const closePageBtn = document.getElementById('closePageBtn');
+        const anotherShortBtn = document.getElementById('anotherShortBtn');
         const militaryWarning = document.getElementById('militaryWarning');
         const shamWarning = document.getElementById('shamWarning');
         const inquiryFab = document.getElementById('inquiryFab');
@@ -1009,6 +1023,24 @@
         closePageBtn.addEventListener('click', function() {
             successOverlay.classList.remove('show');
             window.close();
+        });
+
+        // ===== Another short button: reset except name, military ID, ShamCash =====
+        anotherShortBtn.addEventListener('click', function() {
+            successOverlay.classList.remove('show');
+            var savedName = fullName.value;
+            var savedMil = militaryId.value;
+            var savedSham = shamCash.value;
+            form.reset();
+            reasonDetail.value = '';
+            reasonDetail.disabled = true;
+            monthPickerGroup.classList.add('hidden-field');
+            monthPicker.value = '';
+            fullName.value = savedName;
+            militaryId.value = savedMil;
+            shamCash.value = savedSham;
+            [militaryWarning, shamWarning].forEach(function(w) { w.classList.remove('show'); });
+            hideMessages();
         });
 
         // ===== Reset =====
