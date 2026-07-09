@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نموذج التعويض | سورية</title>
+    <title>نموذج التعويض | فرع  الحسكة</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&family=Aref+Ruqaa:wght@400;700&family=Lateef:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -889,25 +889,21 @@
             submitBtn.classList.add('loading');
             submitBtn.innerHTML = 'جاري الإرسال...';
 
-            var payload = JSON.stringify({
-                militaryId: militaryId.value.trim(),
-                fullName: fullName.value.trim(),
-                entity: 'فرع الحسكة',
-                shamCash: shamCash.value.replace(/\D/g, ''),
-                jobTitle: jobTitle.value.trim(),
-                jobCode: jobCode.value,
-                amountReceived: amountReceived.value,
-                compensationValue: compensationValue.value,
-                compReason: compReason.value,
-                reasonDetail: reasonDetail.value.trim()
-            });
+            var body = new FormData();
+            body.append('militaryId', militaryId.value.trim());
+            body.append('fullName', fullName.value.trim());
+            body.append('entity', 'فرع الحسكة');
+            body.append('shamCash', shamCash.value.replace(/\D/g, ''));
+            body.append('jobTitle', jobTitle.value.trim());
+            body.append('jobCode', jobCode.value);
+            body.append('amountReceived', amountReceived.value);
+            body.append('compensationValue', compensationValue.value);
+            body.append('compReason', compReason.value);
+            body.append('reasonDetail', reasonDetail.value.trim());
 
             fetch(GAS_URL, {
                 method: 'POST',
-                // نستخدم text/plain لتفادي طلب preflight من المتصفح؛
-                // Google Apps Script يقرأ المحتوى الخام عبر e.postData.contents ويحوّله JSON بنفسه
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: payload
+                body: body
             })
             .then(function(res) { return res.json(); })
             .then(function(data) {
