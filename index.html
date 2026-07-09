@@ -698,8 +698,7 @@
         </div>
     </div>
 
-    <!-- Hidden iframe for GAS response -->
-    <iframe id="gasIframe" name="gasIframe" style="display:none"></iframe>
+    <!-- تمت إزالة iframe المخفي - لم يعد مستخدماً بعد التحول إلى fetch() -->
 
     <!-- ===== CONFIRMATION MODAL ===== -->
     <div class="confirm-overlay" id="confirmOverlay">
@@ -883,18 +882,41 @@
 
         confirmCancel.addEventListener('click', hideConfirmation);
 
-        // ===== Send data function (via hidden iframe) =====
+        // ===== Send data function (fetch مباشر إلى GAS، بدون iframe) =====
         function sendData() {
             hideConfirmation();
             loadingOverlay.classList.add('show');
             submitBtn.classList.add('loading');
             submitBtn.innerHTML = 'جاري الإرسال...';
 
-            var form = document.getElementById('compForm');
-            form.action = GAS_URL;
-            form.method = 'POST';
-            form.target = 'gasIframe';
-            form.submit();
+            var body = new URLSearchParams({
+                militaryId: militaryId.value.trim(),
+                fullName: fullName.value.trim(),
+                entity: 'فرع الحسكة',
+                shamCash: shamCash.value.replace(/\D/g, ''),
+                jobTitle: jobTitle.value.trim(),
+                jobCode: jobCode.value,
+                amountReceived: amountReceived.value,
+                compensationValue: compensationValue.value,
+                compReason: compReason.value,
+                reasonDetail: reasonDetail.value.trim()
+            });
+
+            fetch(GAS_URL, {
+                method: 'POST',
+                body: body
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.status === 'success') {
+                    afterSend();
+                } else {
+                    afterError(data.message);
+                }
+            })
+            .catch(function(err) {
+                afterError('تعذر الاتصال بالخادم. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.');
+            });
         }
 
         function afterSend() {
@@ -916,16 +938,6 @@
             msgError.classList.add('show');
             msgError.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-
-        // Listen for GAS response via postMessage
-        window.addEventListener('message', function(e) {
-            var data = e.data || {};
-            if (data.status === 'success') {
-                afterSend();
-            } else if (data.status === 'error') {
-                afterError(data.message);
-            }
-        });
 
         confirmSend.addEventListener('click', sendData);
 
